@@ -10,9 +10,12 @@ namespace ConsoleLinQsamples
     {
         static void Main(string[] args)
         {
-            //MultipleWhereClauses();
-            //SampleWhereMin();
+            MultipleWhereClauses();
+            Console.WriteLine(" ***** ");
+            SampleWhereMin();
+            Console.WriteLine(" ***** ");
             TakeWhileSkipwhile();
+            Console.WriteLine(" ***** ");
         } 
 
         /// <summary>
