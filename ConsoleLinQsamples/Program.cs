@@ -18,11 +18,17 @@ namespace ConsoleLinQsamples
             //    Console.WriteLine(" ***** ");
             //Distict_();
             //Console.WriteLine(" ***** ");
-            DirsNFiles();
+            //DirsNFiles();
+            //Console.WriteLine(" ***** ");
+            CrossArraySelect();
             Console.WriteLine(" ***** ");
 
 
-        } 
+        }
+
+
+
+        #region" MultipleWhereClauses "
 
         /// <summary>
         /// ilk where( n.Length > 3) den sonra toupper onun içinden endswith
@@ -43,8 +49,10 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
+        #endregion
 
 
+        #region" SampleWhereMin "
         /// <summary>
         /// dizideki eleman sayısı en az olanı bulup o sayı kadar elemanı olanlar
         /// </summary>
@@ -62,7 +70,10 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
+        #endregion
 
+
+        #region" TakeWhileSkipwhile "
 
         /// <summary>
         /// TakeWhile = belirlenen(örnekte : 100)den fazla olan(Hariç: örnekte: 234)a gelene kadar öncekiler(örnekte: 3,5,2).
@@ -89,8 +100,11 @@ namespace ConsoleLinQsamples
             }
 
         }
+        #endregion
 
 
+
+        #region" Distict_ "
         /// <summary>
         /// parçalara ayırır.örnekte: harfleri ayırır
         /// </summary>
@@ -103,10 +117,12 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
+        #endregion
 
 
+        #region" DirsNFiles "
         /// <summary>
-        /// 
+        /// belirtilen foldera ait ve alt folder ve  files
         /// </summary>
         static void DirsNFiles()
         {
@@ -140,6 +156,41 @@ namespace ConsoleLinQsamples
 
 
         }
+
+        #endregion
+
+        #region" CrossArraySelect "
+        /// <summary>
+        ///
+        //1a 
+        //1b 
+        //2a 
+        //2b 
+        //3a 
+        //3b 
+        //4a 
+        //4b
+        /// </summary>
+        static void CrossArraySelect()
+        {
+            var numbers = new[] { 1, 2, 3, 4 }.AsQueryable();
+            var letters = new[] { "a", "b" }.AsQueryable();
+
+            IEnumerable<string> query =
+                from n in numbers
+                from l in letters
+                select n.ToString() + l;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
+
+
+        }
+
+        #endregion
+
 
 
 
