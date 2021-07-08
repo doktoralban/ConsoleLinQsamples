@@ -16,8 +16,11 @@ namespace ConsoleLinQsamples
             //    Console.WriteLine(" ***** ");
             //    TakeWhileSkipwhile();
             //    Console.WriteLine(" ***** ");
-            Distict_();
+            //Distict_();
+            //Console.WriteLine(" ***** ");
+            DirsNFiles();
             Console.WriteLine(" ***** ");
+
 
         } 
 
@@ -100,6 +103,45 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
+
+
+        /// <summary>
+        /// 
+        /// </summary>
+        static void DirsNFiles()
+        {
+            string sampleDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            System.IO.DirectoryInfo[] dirs = new System.IO.DirectoryInfo(sampleDirectory).GetDirectories();
+
+            var query =
+                from d in dirs
+                where (d.Attributes & System.IO.FileAttributes.System) == 0
+                select new
+                {
+                    DirectoryName = d.FullName,
+                    Created = d.CreationTime,
+                    Files = from f in d.GetFiles()
+                            where (f.Attributes & System.IO.FileAttributes.Hidden) == 0
+                            select new { FileName = f.Name, f.Length, }
+                };
+
+ 
+
+            // Here's how to enumerate the results manually:
+
+            foreach (var dirFiles in query)
+            {
+                Console.WriteLine("Directory: " + dirFiles.DirectoryName);
+                foreach (var file in dirFiles.Files)
+                    Console.WriteLine("    " + file.FileName + "Len: " + file.Length);
+            }
+
+
+
+        }
+
+
 
     }
 }
