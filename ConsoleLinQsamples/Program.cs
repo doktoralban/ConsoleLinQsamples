@@ -20,7 +20,9 @@ namespace ConsoleLinQsamples
             //Console.WriteLine(" ***** ");
             //DirsNFiles();
             //Console.WriteLine(" ***** ");
-            CrossArraySelect();
+            //CrossArraySelect();
+            //Console.WriteLine(" ***** ");
+            CrossJoinlementVsElement();
             Console.WriteLine(" ***** ");
 
 
@@ -191,6 +193,30 @@ namespace ConsoleLinQsamples
 
         #endregion
 
+        #region" CrossJoinlementVsElement "
+        /// <summary>
+        /// Jay vs Mary 
+        //Jay vs Tom
+        //Mary vs Tom
+        /// </summary>
+        static void CrossJoinlementVsElement()
+        {
+            var players = new[] { "Tom", "Jay", "Mary" }.AsQueryable();
+
+            IEnumerable<string> query =
+                from name1 in players
+                from name2 in players
+                where name1.CompareTo(name2) < 0
+                orderby name1, name2
+                select name1 + " vs " + name2;
+
+            foreach (var item in query)
+            {
+                Console.WriteLine(item);
+            }
+
+        }
+        #endregion
 
 
 
