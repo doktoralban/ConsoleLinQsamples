@@ -10,12 +10,15 @@ namespace ConsoleLinQsamples
     {
         static void Main(string[] args)
         {
-            MultipleWhereClauses();
+            //    MultipleWhereClauses();
+            //    Console.WriteLine(" ***** ");
+            //    SampleWhereMin();
+            //    Console.WriteLine(" ***** ");
+            //    TakeWhileSkipwhile();
+            //    Console.WriteLine(" ***** ");
+            Distict_();
             Console.WriteLine(" ***** ");
-            SampleWhereMin();
-            Console.WriteLine(" ***** ");
-            TakeWhileSkipwhile();
-            Console.WriteLine(" ***** ");
+
         } 
 
         /// <summary>
@@ -85,6 +88,18 @@ namespace ConsoleLinQsamples
         }
 
 
+        /// <summary>
+        /// parçalara ayırır.örnekte: harfleri ayırır
+        /// </summary>
+        static void Distict_()
+        {
+            var a1 = "HelloWorld".Distinct();
+
+                 foreach (var item in a1)
+            {
+                Console.WriteLine(item);
+            }
+        }
 
     }
 }
