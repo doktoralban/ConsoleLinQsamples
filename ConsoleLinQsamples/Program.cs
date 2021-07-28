@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleLinQsamples
+﻿namespace ConsoleLinQsamples
 {
-    class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
+    /// <summary>
+    /// Defines the <see cref="Program" />.
+    /// </summary>
+    internal class Program
     {
-        static void Main(string[] args)
+        /// <summary>
+        /// The Main.
+        /// </summary>
+        /// <param name="args">The args<see cref="string[]"/>.</param>
+        internal static void Main(string[] args)
         {
             //    MultipleWhereClauses();
             //    Console.WriteLine(" ***** ");
@@ -24,19 +29,13 @@ namespace ConsoleLinQsamples
             //Console.WriteLine(" ***** ");
             CrossJoinlementVsElement();
             Console.WriteLine(" ***** ");
-
-
         }
 
-
-
-        #region" MultipleWhereClauses "
-
         /// <summary>
-        /// ilk where( n.Length > 3) den sonra toupper onun içinden endswith
+        /// ilk where( n.Length > 3) den sonra toupper onun içinden endswith.
         /// </summary>
-        static void MultipleWhereClauses()
-            {
+        internal static void MultipleWhereClauses()
+        {
             var names = new[] { "Tom", "Dick", "Harry", "Mary", "Jay" }.AsQueryable();
 
             var query =
@@ -51,14 +50,11 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
-        #endregion
 
-
-        #region" SampleWhereMin "
         /// <summary>
-        /// dizideki eleman sayısı en az olanı bulup o sayı kadar elemanı olanlar
+        /// dizideki eleman sayısı en az olanı bulup o sayı kadar elemanı olanlar.
         /// </summary>
-        static void SampleWhereMin()
+        internal static void SampleWhereMin()
         {
             var names = new[] { "Tom", "Dick", "Harry", "Mary", "Jay" }.AsQueryable();
             IQueryable<string> queryable = (
@@ -72,20 +68,16 @@ namespace ConsoleLinQsamples
                 Console.WriteLine(item);
             }
         }
-        #endregion
-
-
-        #region" TakeWhileSkipwhile "
 
         /// <summary>
         /// TakeWhile = belirlenen(örnekte : 100)den fazla olan(Hariç: örnekte: 234)a gelene kadar öncekiler(örnekte: 3,5,2).
-        /// Skipwhile = belirlenen(örnekte : 100)den fazla olanDan(Dahil: örnekte: 234) itibaren sonrakiler (örnekte: 234,4,1)
+        /// Skipwhile = belirlenen(örnekte : 100)den fazla olanDan(Dahil: örnekte: 234) itibaren sonrakiler (örnekte: 234,4,1).
         /// </summary>
-        static void TakeWhileSkipwhile()
+        internal static void TakeWhileSkipwhile()
         {
             int[] numbers = { 3, 5, 2, 234, 4, 1 };
 
-           var a1= numbers.TakeWhile(n => n < 100) ;
+            var a1 = numbers.TakeWhile(n => n < 100);
 
             foreach (var item in a1)
             {
@@ -94,39 +86,31 @@ namespace ConsoleLinQsamples
 
             Console.WriteLine(" --- --- --- --- --- --- ");
 
-            var a2 =numbers.SkipWhile(n => n < 100) ;
+            var a2 = numbers.SkipWhile(n => n < 100);
 
             foreach (var item in a2)
             {
                 Console.WriteLine(item);
             }
-
         }
-        #endregion
 
-
-
-        #region" Distict_ "
         /// <summary>
-        /// parçalara ayırır.örnekte: harfleri ayırır
+        /// parçalara ayırır.örnekte: harfleri ayırır.
         /// </summary>
-        static void Distict_()
+        internal static void Distict_()
         {
             var a1 = "HelloWorld".Distinct();
 
-                 foreach (var item in a1)
+            foreach (var item in a1)
             {
                 Console.WriteLine(item);
             }
         }
-        #endregion
 
-
-        #region" DirsNFiles "
         /// <summary>
-        /// belirtilen foldera ait ve alt folder ve  files
+        /// belirtilen foldera ait ve alt folder ve  files.
         /// </summary>
-        static void DirsNFiles()
+        internal static void DirsNFiles()
         {
             string sampleDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
 
@@ -144,7 +128,7 @@ namespace ConsoleLinQsamples
                             select new { FileName = f.Name, f.Length, }
                 };
 
- 
+
 
             // Here's how to enumerate the results manually:
 
@@ -154,26 +138,19 @@ namespace ConsoleLinQsamples
                 foreach (var file in dirFiles.Files)
                     Console.WriteLine("    " + file.FileName + "Len: " + file.Length);
             }
-
-
-
         }
 
-        #endregion
-
-        #region" CrossArraySelect "
         /// <summary>
-        ///
-        //1a 
+        /// //1a 
         //1b 
         //2a 
         //2b 
         //3a 
         //3b 
         //4a 
-        //4b
+        //4b.
         /// </summary>
-        static void CrossArraySelect()
+        internal static void CrossArraySelect()
         {
             var numbers = new[] { 1, 2, 3, 4 }.AsQueryable();
             var letters = new[] { "a", "b" }.AsQueryable();
@@ -187,19 +164,14 @@ namespace ConsoleLinQsamples
             {
                 Console.WriteLine(item);
             }
-
-
         }
 
-        #endregion
-
-        #region" CrossJoinlementVsElement "
         /// <summary>
         /// Jay vs Mary 
         //Jay vs Tom
-        //Mary vs Tom
+        //Mary vs Tom.
         /// </summary>
-        static void CrossJoinlementVsElement()
+        internal static void CrossJoinlementVsElement()
         {
             var players = new[] { "Tom", "Jay", "Mary" }.AsQueryable();
 
@@ -214,11 +186,6 @@ namespace ConsoleLinQsamples
             {
                 Console.WriteLine(item);
             }
-
         }
-        #endregion
-
-
-
     }
 }
